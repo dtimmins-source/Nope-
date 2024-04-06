@@ -59,12 +59,16 @@ public class PlayerMovement : MonoBehaviour
         LayerMask climbingLayerMask = LayerMask.GetMask("Climbing");
         if(!playerCapsuleCollider.IsTouchingLayers(climbingLayerMask))
         {
+            playerAnimator.SetBool("isClimbing", false);
             playerRigidbody.gravityScale = gravityScaleAtStart;
             return;
         }
         playerRigidbody.gravityScale = 0f;
         Vector2 playerClimbingVelocity = new Vector2(playerRigidbody.velocity.x, moveInput.y * climbSpeed);
         playerRigidbody.velocity = playerClimbingVelocity;
+
+        bool playerHasVerticalSpeed = Mathf.Abs(playerRigidbody.velocity.y) > Mathf.Epsilon;
+        playerAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
     }
 
     // Player input messages.
