@@ -10,10 +10,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float runSpeed = 5f;
     Vector2 moveInput;
     Rigidbody2D playerRigidbody;
+    Animator playerAnimator;
 
     void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -36,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 playerVelocity = new Vector2(moveInput.x * runSpeed, playerRigidbody.velocity.y);
         playerRigidbody.velocity = playerVelocity;
+
+        bool playerHasHorizontalSpeed = Mathf.Abs(playerRigidbody.velocity.x) > Mathf.Epsilon;
+        playerAnimator.SetBool("isRunning", playerHasHorizontalSpeed);
     }
 
     void OnMove(InputValue value)
