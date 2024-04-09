@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D playerBodyCollider;
     BoxCollider2D playerFeetCollider;
     float gravityScaleAtStart;
+    bool isAlive = true;
 
     void Awake()
     {
@@ -32,9 +33,21 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!isAlive) {return;}
         Run();
         FlipSprite();
-        ClimbLadder();
+        ClimbLadder(); 
+        Die(); 
+    }
+
+    private void Die()
+    {
+        LayerMask enemiesLayerMask = LayerMask.GetMask("Enemies");
+        if(playerBodyCollider.IsTouchingLayers(enemiesLayerMask))
+        {
+            isAlive = false;
+            playerRigidbody.velocity = new Vector2(0f, 0f);
+        }
     }
 
     void Run()
@@ -76,12 +89,14 @@ public class PlayerMovement : MonoBehaviour
     // Player input messages.
     void OnMove(InputValue value)
     {
+        if (!isAlive) {return;}
         moveInput = value.Get<Vector2>();
         //Debug.Log(moveInput);
     }
 
     void OnJump(InputValue value)
     {
+        if (!isAlive) {return;}
         LayerMask groundLayerMask = LayerMask.GetMask("Ground");
         if(!playerFeetCollider.IsTouchingLayers(groundLayerMask))
         {
