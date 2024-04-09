@@ -98,7 +98,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1008205337
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -2008515908, guid: 55772545ff1c46241a0623b09fa7ba35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -193,6 +193,7 @@ MonoBehaviour:
   runSpeed: 5
   jumpSpeed: 20
   climbSpeed: 5
+  deathKick: {x: 0, y: 20}
 --- !u!61 &1178611837006909350
 BoxCollider2D:
   m_ObjectHideFlags: 0
