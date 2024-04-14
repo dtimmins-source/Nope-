@@ -5759,6 +5759,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3014401987964503368, guid: 750f83cb8c7c1d142a747ee678d0f693, type: 3}
+      propertyPath: deathAnimationTimer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4763909666659376958, guid: 750f83cb8c7c1d142a747ee678d0f693, type: 3}
       propertyPath: m_Name
       value: Game Session

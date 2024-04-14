@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameSession : MonoBehaviour
 {
     [SerializeField] int playerLives = 3;
+    [SerializeField] float deathAnimationTimer = 3f;
 
     void Awake()
     {
@@ -27,23 +28,25 @@ public class GameSession : MonoBehaviour
     {
         if(playerLives > 1)
         {
-            TakeLife();
+            StartCoroutine(TakeLife());
         }
         else
         {
-            ResetGameSession();
+             StartCoroutine(ResetGameSession());
         }
     }
 
-    void TakeLife()
+    IEnumerator TakeLife()
     {
+        yield return new WaitForSecondsRealtime(deathAnimationTimer);
         playerLives--;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
 
-    void ResetGameSession()
+    IEnumerator ResetGameSession()
     {
+        yield return new WaitForSecondsRealtime(deathAnimationTimer);
         SceneManager.LoadScene(0);
         Destroy(gameObject);
     }
