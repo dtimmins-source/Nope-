@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.velocity = deathKick;
             playerBodyCollider.enabled = false;
             playerFeetCollider.enabled = false;
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
         }
     }
 
