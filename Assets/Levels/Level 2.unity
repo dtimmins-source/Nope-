@@ -15075,6 +15075,10 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 502220764}
+    - target: {fileID: 535907626824608101, guid: 2fa0932f137bd714bb322f1814e0d5c6, type: 3}
+      propertyPath: orthographic size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 535907626824608154, guid: 2fa0932f137bd714bb322f1814e0d5c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.607346
