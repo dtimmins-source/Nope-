@@ -60,6 +60,7 @@ public class GameSession : MonoBehaviour
     IEnumerator ResetGameSession()
     {
         yield return new WaitForSecondsRealtime(deathAnimationTimer);
+        FindObjectOfType<ScenePersist>().ResetScenePersist();
         SceneManager.LoadScene(0);
         Destroy(gameObject);
     }
